@@ -1,0 +1,36 @@
+
+SENTIMENT ANALYSIS SUMMARY - DHAKA LOCATION-BASED POSTS
+================================================================================
+
+Dataset: 328 posts from Dhaka-located Reddit users
+Date: November 2025
+
+OVERALL SENTIMENT:
+  • Positive: 70 (21.3%)
+  • Neutral: 239 (72.9%)
+  • Negative: 19 (5.8%)
+  • Average Polarity: 0.107
+  • Average Subjectivity: 0.172
+
+TOP EMOTIONS:
+  • Neutral: 266 (81.1%)
+  • Joy: 41 (12.5%)
+  • Trust: 12 (3.7%)
+  • Anger: 4 (1.2%)
+  • Sadness: 3 (0.9%)
+  • Fear: 2 (0.6%)
+
+TOP TOPICS:
+  • General/Miscellaneous: 196 posts (59.8%)
+  • Shopping/Commerce: 35 posts (10.7%)
+  • Education/Career: 29 posts (8.8%)
+  • Travel/Transportation: 25 posts (7.6%)
+  • Technology/Gadgets: 22 posts (6.7%)
+  • Food/Dining: 21 posts (6.4%)
+  • Healthcare/Medical: 19 posts (5.8%)
+  • Housing/Real Estate: 16 posts (4.9%)
+
+KEY INSIGHTS:
+  • Most discussed: General/Miscellaneous
+  • Most positive topic: Healthcare/Medical
+  • Most critical topic: Housing/Real Estate

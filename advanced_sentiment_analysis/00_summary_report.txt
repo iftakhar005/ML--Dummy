@@ -1,0 +1,42 @@
+
+📊 DHAKA REDDIT SENTIMENT & TOPIC ANALYSIS
+============================================
+
+📈 DATASET:
+  • Total Posts: 494
+  • Subreddits: bangladesh, dhaka
+  • Date Range: 2025-08-25 23:30:45 to 2025-11-19 22:28:22
+
+💬 SENTIMENT DISTRIBUTION:
+  • Positive: 217 (43.9%)
+  • Neutral: 242 (49.0%)
+  • Negative: 35 (7.1%)
+  • Avg Polarity: 0.107
+  • Avg Subjectivity: 0.359
+
+😊 EMOTION DISTRIBUTION:
+  • neutral: 293 (59.3%)
+  • joy: 120 (24.3%)
+  • trust: 39 (7.9%)
+  • anger: 21 (4.3%)
+  • sadness: 11 (2.2%)
+
+🏷️  TOP TOPICS:
+  5. Housing/Real Estate: 311 posts
+  11. Technology/Gadgets: 263 posts
+  1. Education/Career: 168 posts
+  12. Travel/Transportation: 124 posts
+  9. Shopping/Commerce: 122 posts
+
+📁 OUTPUT FILES:
+  1. 01_topic_sentiment_analysis.csv
+  2. 02_sentiment_by_subreddit.csv
+  3. 03_most_positive_posts.csv
+  4. 04_most_negative_posts.csv
+  5. 05_posts_with_advanced_analysis.csv
+
+✅ KEY FINDINGS:
+  • Most discussed: Real Estate (61.7%), Technology (52.8%)
+  • Most positive topic: Relationships/Social
+  • Most common emotion: neutral
+  • Engagement avg: 15.0 upvotes, 13.4 comments
