@@ -1,62 +1,46 @@
 import json
 
-def analyze_and_merge(file1_path, file2_path, output_path):
-    print(f"--- Starting Process ---")
-    
-    # 1. Load the first file (Older data)
+# 1. Define your file names
+file1_name = 'dhaka_extended_posts.json'
+file2_name = 'combined_dhaka_posts.json'
+output_file_name = 'final_dhaka_dataset.json'
+
+def load_json(filename):
     try:
-        with open(file1_path, 'r', encoding='utf-8') as f:
-            data1 = json.load(f)
-            print(f"Loaded {file1_path}: {len(data1)} records")
-    except Exception as e:
-        print(f"Error loading {file1_path}: {e}")
-        data1 = []
+        with open(filename, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print(f"Error: {filename} not found.")
+        return []
 
-    # 2. Load the second file (Newer data)
-    try:
-        with open(file2_path, 'r', encoding='utf-8') as f:
-            data2 = json.load(f)
-            print(f"Loaded {file2_path}: {len(data2)} records")
-    except Exception as e:
-        print(f"Error loading {file2_path}: {e}")
-        data2 = []
+# 2. Load the data
+print("Loading datasets...")
+data1 = load_json(file1_name)
+data2 = load_json(file2_name)
 
-    # 3. Merge and Deduplicate
-    # We use a dictionary keyed by 'url' to ensure uniqueness.
-    unique_posts = {}
-    
-    # Add entries from File 1
-    for post in data1:
-        if 'url' in post:
-            unique_posts[post['url']] = post
-            
-    # Add entries from File 2
-    # This will overwrite entries from File 1 if they share the same URL,
-    # effectively updating them with the newer data.
-    duplicates_count = 0
-    new_count = 0
-    for post in data2:
-        if 'url' in post:
-            if post['url'] in unique_posts:
-                duplicates_count += 1
-                unique_posts[post['url']] = post # Update with newer version
-            else:
-                new_count += 1
-                unique_posts[post['url']] = post
+# 3. Combine the lists
+combined_raw = data1 + data2
+print(f"Total posts loaded: {len(combined_raw)}")
 
-    # Convert back to a list
-    combined_list = list(unique_posts.values())
+# 4. Remove duplicates based on 'url'
+# We use a dictionary because keys must be unique. 
+# If a URL repeats, the new post will just overwrite the old one, automatically removing duplicates.
+unique_posts_dict = {}
 
-    # 4. Stats and Save
-    print(f"\n--- Merge Analysis ---")
-    print(f"Duplicates consolidated: {duplicates_count}")
-    print(f"New unique posts added: {new_count}")
-    print(f"Total combined posts: {len(combined_list)}")
+for post in combined_raw:
+    if 'url' in post:
+        unique_posts_dict[post['url']] = post
 
-    with open(output_path, 'w', encoding='utf-8') as f:
-        json.dump(combined_list, f, indent=4, ensure_ascii=False)
-    
-    print(f"\nSuccessfully saved to: {output_path}")
+# Convert back to a list
+final_clean_data = list(unique_posts_dict.values())
 
-if __name__ == "__main__":
-    analyze_and_merge('reddit_data.json', 'reddit_data_dhaka.json', 'combined_dhaka_posts.json')
+# 5. Save the clean data
+with open(output_file_name, 'w', encoding='utf-8') as f:
+    json.dump(final_clean_data, f, indent=4, ensure_ascii=False)
+
+# 6. Print stats
+duplicates_removed = len(combined_raw) - len(final_clean_data)
+print("-" * 30)
+print(f"Successfully saved to: {output_file_name}")
+print(f"Final unique post count: {len(final_clean_data)}")
+print(f"Duplicates removed: {duplicates_removed}")
